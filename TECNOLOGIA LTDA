@@ -1,0 +1,26 @@
+SALARIO_MINIMO = 1320.0
+
+TABELA_VALORES = {
+    'C': {'N': 0.1, 'M': 0.15, 'V': 0.15},
+    'O': {'N': 0.09, 'M': 0.14, 'V': 0.14},
+}
+
+
+num_funcionarios = int(input("Digite o número de funcionários: "))
+funcionarios = []
+for i in range(num_funcionarios):
+    nome = input("Digite o nome do funcionário: ")
+    horas_trabalhadas = float(input("Digite a quantidade de horas trabalhadas no mês: "))
+    turno = ''
+    while turno not in ['M', 'V', 'N']:
+        turno = input("Digite o turno de trabalho (M = Matutino, V = Vespertino e N = Noturno): ")
+    categoria = ''
+    while categoria not in ['G', 'O']:
+        categoria = input("Digite a categoria do funcionário (G = Gerente e O = Operário): ")
+    funcionarios.append({'nome': nome, 'horas_trabalhadas': horas_trabalhadas, 'turno': turno, 'categoria': categoria})
+
+
+for funcionario in funcionarios:
+    valor_hora = TABELA_VALORES[funcionario['categoria']][funcionario['turno']] * SALARIO_MINIMO
+    salario = valor_hora * funcionario['horas_trabalhadas']
+    print("O salário de", funcionario['nome'], "é de R$", salario)
