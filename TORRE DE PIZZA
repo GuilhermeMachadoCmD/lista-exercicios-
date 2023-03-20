@@ -1,0 +1,30 @@
+num_moradores = int(input("Digite o número de moradores: "))
+moradores = []
+for i in range(num_moradores):
+    elevador = ''
+    while elevador not in ['A', 'B', 'C']:
+        elevador = input(f"Digite o elevador utilizado pelo morador {i+1} (A, B ou C): ")
+    periodo = ''
+    while periodo not in ['M', 'V', 'N']:
+        periodo = input(f"Digite o período em que o morador {i+1} utiliza o elevador (M = Matutino, V = Vespertino, N = Noturno): ")
+    moradores.append({'elevador': elevador, 'periodo': periodo})
+
+
+freq_elevadores = {'A': 0, 'B': 0, 'C': 0}
+freq_periodos = {'M': 0, 'V': 0, 'N': 0}
+for morador in moradores:
+    freq_elevadores[morador['elevador']] += 1
+    freq_periodos[morador['periodo']] += 1
+
+
+elevador_mais_utilizado = max(freq_elevadores, key=freq_elevadores.get)
+periodo_maior_fluxo = max(freq_periodos, key=freq_periodos.get)
+
+
+periodo_mais_utilizado = max(freq_periodos, key=freq_periodos.get)
+porcentagem_diferenca = (freq_periodos[periodo_maior_fluxo] - freq_periodos[min(freq_periodos, key=freq_periodos.get)]) / freq_periodos[min(freq_periodos, key=freq_periodos.get)] * 100
+
+# Mostra os resultados na tela
+print(f"O elevador mais utilizado é o {elevador_mais_utilizado} e o período de maior fluxo é o {periodo_maior_fluxo}.")
+print(f"O período mais utilizado de todos é o {periodo_mais_utilizado}.")
+print(f"A diferença percentual entre o mais usado dos horários e o menos usado é de {porcentagem_diferenca:.2f}%.")
