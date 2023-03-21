@@ -24,7 +24,7 @@ periodo_maior_fluxo = max(freq_periodos, key=freq_periodos.get)
 periodo_mais_utilizado = max(freq_periodos, key=freq_periodos.get)
 porcentagem_diferenca = (freq_periodos[periodo_maior_fluxo] - freq_periodos[min(freq_periodos, key=freq_periodos.get)]) / freq_periodos[min(freq_periodos, key=freq_periodos.get)] * 100
 
-# Mostra os resultados na tela
+
 print(f"O elevador mais utilizado é o {elevador_mais_utilizado} e o período de maior fluxo é o {periodo_maior_fluxo}.")
 print(f"O período mais utilizado de todos é o {periodo_mais_utilizado}.")
 print(f"A diferença percentual entre o mais usado dos horários e o menos usado é de {porcentagem_diferenca:.2f}%.")
